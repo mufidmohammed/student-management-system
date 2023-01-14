@@ -1,6 +1,10 @@
 <?php
 
+session_start();
+
 if(!isset($_SESSION['auth']))
 {
-    header("Location: auth/login.php");
+    $path = __DIR__ . '/../auth/login.php';
+
+    header("Location: {$path}");
 }

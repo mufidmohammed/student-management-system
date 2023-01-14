@@ -11,10 +11,10 @@ include_once('../partials/sidebar.php');
     <main>
         <div class="head-title">
             <div class="left">
-                <h1>Courses</h1>
+                <h1>Instructors</h1>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Courses</a>
+                        <a href="#">Instructors</a>
                     </li>
                     <li><i class='bx bx-chevron-right'></i></li>
                     <li>
@@ -24,41 +24,34 @@ include_once('../partials/sidebar.php');
             </div>
             <a href="create.php" class="btn-download">
                 <i class='bx bxs-cloud-download'></i>
-                <span class="text">Add course</span>
+                <span class="text">Add instructor</span>
             </a>
         </div>
         <div class="table-data">
             <div class="ls-tables">
                 <div class="order">
                     <div class="head">
-                        <h3>All courses</h3>
+                        <h3>All instructors</h3>
                     </div>
 
-                    <table id="courses-table">
+                    <table id="instructors-table">
                         <thead>
                             <tr>
-                                <th>Code</th>
-                                <th>Name</th>
-                                <th>Credit hours</th>
+                                <th>ID</th>
+                                <th>First name</th>
+                                <th>First name</th>
+                                <th>Email</th>
+                                <th>Phone number</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>MTH315</td>
-                                <td>Differential Equations I</td>
-                                <td>3</td>
-                                <td>
-                                    <div class="tabgroup">
-                                        <span class="tab-item edit"><a href="edit.php">Edit</a></span>
-                                        <span class="tab-item delete"><a href="">Delete</a></span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>CSC102</td>
-                                <td>Introduction to Computer Science</td>
-                                <td>3</td>
+                                <td>003</td>
+                                <td>Alex</td>
+                                <td>Flexing</td>
+                                <td>alex@flex.com</td>
+                                <td>0241234567</td>
                                 <td>
                                     <div class="tabgroup">
                                         <span class="tab-item edit"><a href="edit.php">Edit</a></span>
@@ -80,6 +73,6 @@ include_once('../partials/sidebar.php');
 
 <script>
 $(document).ready(function() {
-    $('#students-table').DataTable();
+    $('#instructors-table').DataTable();
 })
 </script>

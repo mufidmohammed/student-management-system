@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 
@@ -17,8 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $hash = $result['password'];
         if (password_verify($password, $hash))
         {
-            $path = '../index.php';
-            header("Location: ");
+            $_SESSION['auth'] = true;
+            $path = '../view/index.php';
+            header("Location: $path");
         }
     }
 }

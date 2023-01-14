@@ -34,7 +34,7 @@ include_once('../partials/sidebar.php');
                         <h3>All instructors</h3>
                     </div>
 
-                    <table id="instructors-table">
+                    <table id="sections-table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -73,6 +73,6 @@ include_once('../partials/sidebar.php');
 
 <script>
 $(document).ready(function() {
-    $('#students-table').DataTable();
+    $('#sections-table').DataTable();
 })
 </script>

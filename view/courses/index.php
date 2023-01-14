@@ -11,10 +11,10 @@ include_once('../partials/sidebar.php');
     <main>
         <div class="head-title">
             <div class="left">
-                <h1>Enrollments</h1>
+                <h1>Courses</h1>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Enrollments</a>
+                        <a href="#">Courses</a>
                     </li>
                     <li><i class='bx bx-chevron-right'></i></li>
                     <li>
@@ -24,32 +24,30 @@ include_once('../partials/sidebar.php');
             </div>
             <a href="create.php" class="btn-download">
                 <i class='bx bxs-cloud-download'></i>
-                <span class="text">Enroll student</span>
+                <span class="text">Add course</span>
             </a>
         </div>
         <div class="table-data">
             <div class="ls-tables">
                 <div class="order">
                     <div class="head">
-                        <h3>All enrollments</h3>
+                        <h3>All courses</h3>
                     </div>
 
                     <table id="courses-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Student ID</th>
-                                <th>Course Code</th>
-                                <th>Grade</th>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Credit hours</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>FMS/0233/20</td>
-                                <td>CSC331</td>
-                                <td>4.56</td>
+                                <td>MTH315</td>
+                                <td>Differential Equations I</td>
+                                <td>3</td>
                                 <td>
                                     <div class="tabgroup">
                                         <span class="tab-item edit"><a href="edit.php">Edit</a></span>
@@ -58,10 +56,9 @@ include_once('../partials/sidebar.php');
                                 </td>
                             </tr>
                             <tr>
-                                <td>2</td>
-                                <td>FMS/0100/19</td>
-                                <td>CSC411</td>
-                                <td>4.50</td>
+                                <td>CSC102</td>
+                                <td>Introduction to Computer Science</td>
+                                <td>3</td>
                                 <td>
                                     <div class="tabgroup">
                                         <span class="tab-item edit"><a href="edit.php">Edit</a></span>
@@ -83,6 +80,6 @@ include_once('../partials/sidebar.php');
 
 <script>
 $(document).ready(function() {
-    $('#students-table').DataTable();
+    $('#courses-table').DataTable();
 })
 </script>

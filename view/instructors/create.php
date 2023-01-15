@@ -24,7 +24,7 @@ include_once('../partials/sidebar.php');
                 </ul>
             </div>
             <a href="index.php" class="btn-download">
-                <i class='bx bxs-cloud-download'></i>
+                <i class='bx bxs-chevron-left'></i>
                 <span class="text">Back</span>
             </a>
         </div>

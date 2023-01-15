@@ -19,12 +19,12 @@ include_once('../partials/sidebar.php');
                     </li>
                     <li><i class='bx bx-chevron-right'></i></li>
                     <li>
-                        <a class="active" href="#">edit</a>
+                        <a class="active" href="#">add</a>
                     </li>
                 </ul>
             </div>
             <a href="index.php" class="btn-download">
-                <i class='bx bxs-cloud-download'></i>
+                <i class='bx bxs-chevron-left'></i>
                 <span class="text">Back</span>
             </a>
         </div>
@@ -32,7 +32,7 @@ include_once('../partials/sidebar.php');
 
         <div class="table-data">
             <div class="form-data">
-                <div class="form-head">Update Section</div>
+                <div class="form-head">Add Section</div>
                 <form action="" method="post">
                     <div class="input-field">
                         <label for="courseCode">Course code</label>
@@ -66,7 +66,7 @@ include_once('../partials/sidebar.php');
                         </select>
                     </div>
                     <div class="form-submit">
-                        <button class="submit-button" role="submit">Update</button>
+                        <button class="submit-button" role="submit">Add</button>
                     </div>
                 </form>
             </div>

@@ -23,8 +23,8 @@ include_once('../partials/sidebar.php');
                 </ul>
             </div>
             <a href="create.php" class="btn-download">
-                <i class='bx bxs-cloud-download'></i>
-                <span class="text">Add student</span>
+                <i class='bx bxs-folder-plus'></i>
+                <span class="text">Add</span>
             </a>
         </div>
         <div class="table-data">

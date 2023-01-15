@@ -36,10 +36,10 @@
                 <span class="text">Instructors</span>
             </a>
         </li>
-        <li class="<?php if($link == $root . 'view/sections/index.php') echo 'active' ?>">
-            <a href="<?= $root . 'view/sections/index.php' ?>">
-                <i class='bx bxs-detail'></i>
-                <span class="text">Sections</span>
+        <li class="<?php if($link == $root . 'view/appointments/index.php') echo 'active' ?>">
+            <a href="<?= $root . 'view/appointments/index.php' ?>">
+                <i class='bx bxs-paper-plane'></i>
+                <span class="text">Appointments</span>
             </a>
         </li>
     </ul>

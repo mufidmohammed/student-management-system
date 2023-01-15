@@ -11,10 +11,10 @@ include_once('../partials/sidebar.php');
     <main>
         <div class="head-title">
             <div class="left">
-                <h1>Instructors</h1>
+                <h1>Appointments</h1>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Instructors</a>
+                        <a href="#">Appointments</a>
                     </li>
                     <li><i class='bx bx-chevron-right'></i></li>
                     <li>
@@ -23,18 +23,18 @@ include_once('../partials/sidebar.php');
                 </ul>
             </div>
             <a href="create.php" class="btn-download">
-                <i class='bx bxs-cloud-download'></i>
-                <span class="text">Add instructor</span>
+                <i class='bx bxs-folder-plus'></i>
+                <span class="text">Add</span>
             </a>
         </div>
         <div class="table-data">
             <div class="ls-tables">
                 <div class="order">
                     <div class="head">
-                        <h3>All instructors</h3>
+                        <h3>All appointments</h3>
                     </div>
 
-                    <table id="sections-table">
+                    <table id="appointments-table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -73,6 +73,6 @@ include_once('../partials/sidebar.php');
 
 <script>
 $(document).ready(function() {
-    $('#sections-table').DataTable();
+    $('#appointments-table').DataTable();
 })
 </script>

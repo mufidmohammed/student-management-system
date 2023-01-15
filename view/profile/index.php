@@ -36,7 +36,7 @@ include_once('../partials/sidebar.php');
                 </ul>
             </div>
             <a href="../index.php" class="btn-download">
-                <i class='bx bxs-cloud-download'></i>
+                <i class='bx bxs-chevron-left'></i>
                 <span class="text">Back</span>
             </a>
         </div>
@@ -119,6 +119,34 @@ include_once('../partials/sidebar.php');
                 </div>
             </div>
         </div>
+
+        <!-- Password -->
+        <div class="form-group">
+            <div class="form-info">Change password</div>
+            <div class="table-data">
+                <div class="form-data">
+                    <form action="" method="post">
+                        <div class="input-field">
+                            <label for="oldPassword">Old password</label>
+                            <input type="text" name="old_password" value="" class="form-control" required="">
+                        </div>
+                        <div class="input-field">
+                            <label for="newPassword">New password</label>
+                            <input type="password" name="new_password" value="" class="form-control" required="">
+                        </div>
+                        <div class="input-field">
+                            <label for="confirmPassword">Confirm password</label>
+                            <input type="text" name="confirm_password" value="" class="form-control" required="">
+                        </div>
+                        <div class="form-submit">
+                            <button class="submit-button" role="submit">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
     </main>
     <!-- MAIN -->
 

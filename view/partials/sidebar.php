@@ -51,7 +51,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="logout">
+            <a href="<?= $root . 'app/logout.php' ?>" class="logout" onclick="return confirm('Are you sure you want to logout?')">
                 <i class='bx bxs-log-out-circle'></i>
                 <span class="text">Logout</span>
             </a>

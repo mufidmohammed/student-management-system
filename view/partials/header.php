@@ -1,8 +1,10 @@
 <?php 
 
-// require_once('app/redirect.php');
+require_once(dirname(__DIR__, 2) . '/app/redirect.php');
 
-$root = '/student-management-system' . '/';
+require_once(dirname(__DIR__, 2) . '/app/database.php');
+
+$root = '/' . $_ENV['APP_ROOT'] . '/';
 
 ?>
 

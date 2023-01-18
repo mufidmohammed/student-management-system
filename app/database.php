@@ -1,21 +1,35 @@
 <?php
 
+require_once __DIR__ . '/../vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
+
 class Database {
-	private $host = "localhost";
-	private $db_name = "student_management_system";
-	private $username = "root";
-	private $password = "";
+	private $host;
+	private $db_name;
+	private $username;
+	private $password;
 
 	public $conn;
 
 	public function __construct()
 	{
+		$this->set_variables();
 		try {
 			$this->conn = new PDO("mysql:host=$this->host;dbname=$this->db_name", $this->username, $this->password);
 			$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		} catch (PDOException $e) {
 			echo "Connection Error: " . $e->getMessage();
 		}
+	}
+
+	private function set_variables(): void
+	{
+		$this->host = $_ENV['DB_HOST'];
+		$this->db_name = $_ENV['DB_NAME'];
+		$this->username = $_ENV['DB_USER'];
+		$this->password = $_ENV['DB_PASSWORD'];
 	}
 
 	public function all(string $table): array
@@ -111,7 +125,10 @@ class Database {
 			$stmt = $this->conn->prepare($sql);
 			$stmt->bindValue(':id', $id);
 			$stmt->execute();
-			return $stmt->fetch(PDO::fetch_assoc());
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
+			if (!$result)
+				return [];
+			return $result;
 		} catch (PDOException $e) {
 			echo 'Error: ' . $e->getMessage();
 			return [];

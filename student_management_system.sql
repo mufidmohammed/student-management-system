@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2023 at 04:24 AM
+-- Generation Time: Jan 18, 2023 at 02:45 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -55,7 +55,7 @@ INSERT INTO `admin` (`first_name`, `last_name`, `gender`, `date_of_birth`, `phon
 
 CREATE TABLE `appointments` (
   `id` int(11) NOT NULL,
-  `course_code` varchar(6) NOT NULL,
+  `course_id` int(11) NOT NULL,
   `semester` varchar(6) NOT NULL,
   `level` varchar(3) NOT NULL,
   `instructor_id` int(11) NOT NULL
@@ -68,10 +68,19 @@ CREATE TABLE `appointments` (
 --
 
 CREATE TABLE `courses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(6) NOT NULL,
   `name` varchar(100) NOT NULL,
   `credit_hours` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`code`, `name`, `credit_hours`) VALUES
+('MTH331', 'Numerical Analysis', 3),
+('MTH415', 'Differential Equations III', 3);
 
 -- --------------------------------------------------------
 
@@ -82,7 +91,7 @@ CREATE TABLE `courses` (
 CREATE TABLE `enrollments` (
   `id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
-  `course_code` varchar(6) NOT NULL,
+  `course_id` int(11) NOT NULL,
   `grade` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -129,14 +138,14 @@ CREATE TABLE `students` (
 --
 ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `course_code` (`course_code`),
+  ADD KEY `course_id` (`course_id`),
   ADD KEY `instructor_id` (`instructor_id`);
 
 --
 -- Indexes for table `courses`
 --
 ALTER TABLE `courses`
-  ADD PRIMARY KEY (`code`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `enrollments`
@@ -144,7 +153,7 @@ ALTER TABLE `courses`
 ALTER TABLE `enrollments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `student_id` (`student_id`),
-  ADD KEY `course_code` (`course_code`);
+  ADD KEY `course_id` (`course_id`);
 
 --
 -- Indexes for table `instructors`
@@ -194,7 +203,7 @@ ALTER TABLE `students`
 -- Constraints for table `appointments`
 --
 ALTER TABLE `appointments`
-  ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`course_code`) REFERENCES `courses` (`code`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`instructor_id`) REFERENCES `instructors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -202,7 +211,7 @@ ALTER TABLE `appointments`
 --
 ALTER TABLE `enrollments`
   ADD CONSTRAINT `enrollments_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `enrollments_ibfk_2` FOREIGN KEY (`course_code`) REFERENCES `courses` (`code`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `enrollments_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

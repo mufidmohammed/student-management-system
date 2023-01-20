@@ -3,6 +3,10 @@
 include_once('../partials/header.php');
 include_once('../partials/sidebar.php');
 
+$db = new Database();
+
+$enrollments = $db->all('enrollments');
+
 ?>
 
 <section id="content">
@@ -45,30 +49,23 @@ include_once('../partials/sidebar.php');
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach($enrollments as $enrollment): ?>
+                            <?php
+                                $course_code = $db->find('courses', $enrollment['course_id'])['code'];
+                            ?>
                             <tr>
-                                <td>1</td>
-                                <td>FMS/0233/20</td>
-                                <td>CSC331</td>
-                                <td>4.56</td>
+                                <td><?= $enrollment['id'] ?></td>
+                                <td><?= $enrollment['student_id'] ?></td>
+                                <td><?= $course_code ?></td>
+                                <td><?= $enrollment['grade'] ?></td>
                                 <td>
                                     <div class="tabgroup">
-                                        <span class="tab-item edit"><a href="edit.php">Edit</a></span>
-                                        <span class="tab-item delete"><a href="">Delete</a></span>
+                                        <span class="tab-item edit"><a href="edit.php?id=<?= $enrollment['id'] ?>">Edit</a></span>
+                                        <span class="tab-item delete"><a href="<?= $root . 'app/delete.php?table=enrollments&id=' . $enrollment['id'] ?>" onclick="return confirm('Are you sure you want to delete <?= $enrollment['id'] ?>?')">Delete</a></span>
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>FMS/0100/19</td>
-                                <td>CSC411</td>
-                                <td>4.50</td>
-                                <td>
-                                    <div class="tabgroup">
-                                        <span class="tab-item edit"><a href="edit.php">Edit</a></span>
-                                        <span class="tab-item delete"><a href="">Delete</a></span>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php endforeach ?>
                         </tbody>
                     </table>
 

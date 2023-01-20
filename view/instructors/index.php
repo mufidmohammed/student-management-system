@@ -3,6 +3,10 @@
 include_once('../partials/header.php');
 include_once('../partials/sidebar.php');
 
+$db = new Database();
+
+$instructors = $db->all('instructors');
+
 ?>
 
 <section id="content">
@@ -46,19 +50,21 @@ include_once('../partials/sidebar.php');
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach($instructors as $instructor): ?>
                             <tr>
-                                <td>003</td>
-                                <td>Alex</td>
-                                <td>Flexing</td>
-                                <td>alex@flex.com</td>
-                                <td>0241234567</td>
+                                <td><?= $instructor['id'] ?></td>
+                                <td><?= $instructor['first_name'] ?></td>
+                                <td><?= $instructor['last_name'] ?></td>
+                                <td><?= $instructor['email'] ?></td>
+                                <td><?= $instructor['phone_number'] ?></td>
                                 <td>
                                     <div class="tabgroup">
-                                        <span class="tab-item edit"><a href="edit.php">Edit</a></span>
-                                        <span class="tab-item delete"><a href="">Delete</a></span>
+                                        <span class="tab-item edit"><a href="edit.php?id=<?= $instructor['id'] ?>">Edit</a></span>
+                                        <span class="tab-item delete"><a href="<?= $root . 'app/delete.php?table=instructors&id=' . $instructor['id'] ?>" onclick="return confirm('Are you sure you want to delete instructor <?= $instructor['id'] ?>?')">Delete</a></span>
                                     </div>
                                 </td>
                             </tr>
+                            <?php endforeach ?>
                         </tbody>
                     </table>
 

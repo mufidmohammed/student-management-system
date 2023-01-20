@@ -3,6 +3,11 @@
 include_once('../partials/header.php');
 include_once('../partials/sidebar.php');
 
+$db = new Database();
+
+$students = $db->all('students');
+$courses = $db->all('courses');
+
 ?>
 
 <section id="content">
@@ -33,21 +38,23 @@ include_once('../partials/sidebar.php');
         <div class="table-data">
             <div class="form-data">
                 <div class="form-head">New Enrollment</div>
-                <form action="" method="post">
+                <form action="<?= $root . 'app/create.php?table=enrollments' ?>" method="post">
                     <div class="input-field">
                         <label for="studentID">Student ID</label>
                         <select name="student_id" class="form-control">
-                            <option value="">FMS/0132/19</option>
-                            <option value="">FMS/0132/19</option>
-                            <option value="">FMS/0132/19</option>
+                            <option value=""></option>
+                            <?php foreach($students as $student): ?>
+                                <option value="<?= $student['id'] ?>"><?= $student['id'] ?></option>
+                            <?php endforeach ?>
                         </select>
                     </div>
                     <div class="input-field">
                         <label for="studentID">Course Code</label>
-                        <select name="student_id" class="form-control">
-                            <option value="">MTH333</option>
-                            <option value="">CSC413</option>
-                            <option value="">STS301</option>
+                        <select name="course_id" class="form-control">
+                            <option value=""></option>
+                            <?php foreach($courses as $course): ?>
+                                <option value="<?= $course['id'] ?>"><?= $course['code'] ?></option>
+                            <?php endforeach ?>
                         </select>
                     </div>
                     <div class="input-field">

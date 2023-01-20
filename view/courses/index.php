@@ -3,6 +3,10 @@
 include_once('../partials/header.php');
 include_once('../partials/sidebar.php');
 
+$db = new Database();
+
+$courses = $db->all('courses');
+
 ?>
 
 <section id="content">
@@ -44,28 +48,23 @@ include_once('../partials/sidebar.php');
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach($courses as $course): ?>
                             <tr>
-                                <td>MTH315</td>
-                                <td>Differential Equations I</td>
-                                <td>3</td>
+                                <td><?= $course['code'] ?></td>
+                                <td><?= $course['name'] ?></td>
+                                <td><?= $course['credit_hours'] ?></td>
                                 <td>
                                     <div class="tabgroup">
-                                        <span class="tab-item edit"><a href="edit.php">Edit</a></span>
-                                        <span class="tab-item delete"><a href="">Delete</a></span>
+                                        <span class="tab-item edit"><a
+                                                href="edit.php?id=<?= $course['id'] ?>">Edit</a></span>
+                                        <span class="tab-item delete">
+                                            <a href="<?= $root . 'app/delete.php?table=courses&id=' . $course['id'] ?>" onclick="return confirm('Are you sure you want to delete <?= $course['code'] ?>?')">Delete</a>
+                                        </span>
+
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>CSC102</td>
-                                <td>Introduction to Computer Science</td>
-                                <td>3</td>
-                                <td>
-                                    <div class="tabgroup">
-                                        <span class="tab-item edit"><a href="edit.php">Edit</a></span>
-                                        <span class="tab-item delete"><a href="">Delete</a></span>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php endforeach ?>
                         </tbody>
                     </table>
 

@@ -3,6 +3,10 @@
 include_once('../partials/header.php');
 include_once('../partials/sidebar.php');
 
+$db = new Database();
+
+$appointments = $db->all('appointments');
+
 ?>
 
 <section id="content">
@@ -46,19 +50,24 @@ include_once('../partials/sidebar.php');
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach($appointments as $appointment): ?>
+                                <?php
+                                    $course_code = $db->find('courses', $appointment['course_id'])['code'];
+                                ?>
                             <tr>
-                                <td>003</td>
-                                <td>MTH331</td>
-                                <td>first</td>
-                                <td>300</td>
-                                <td>15</td>
+                                <td><?= $appointment['id'] ?></td>
+                                <td><?= $course_code ?></td>
+                                <td><?= $appointment['semester'] ?></td>
+                                <td><?= $appointment['level'] ?></td>
+                                <td><?= $appointment['instructor_id'] ?></td>
                                 <td>
                                     <div class="tabgroup">
-                                        <span class="tab-item edit"><a href="edit.php">Edit</a></span>
-                                        <span class="tab-item delete"><a href="">Delete</a></span>
+                                        <span class="tab-item edit"><a href="edit.php?id=<?= $appointment['id'] ?>">Edit</a></span>
+                                        <span class="tab-item delete"><a href="<?= $root . 'app/delete.php?table=appointments&id=' . $appointment['id'] ?>" onclick="return confirm('Are you sure you want to delete <?= $appointment['id'] ?>?')">Delete</a></span>
                                     </div>
                                 </td>
                             </tr>
+                            <?php endforeach ?>
                         </tbody>
                     </table>
 

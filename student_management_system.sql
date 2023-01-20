@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2023 at 02:45 AM
+-- Generation Time: Jan 20, 2023 at 11:02 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -61,6 +61,14 @@ CREATE TABLE `appointments` (
   `instructor_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `appointments`
+--
+
+INSERT INTO `appointments` (`id`, `course_id`, `semester`, `level`, `instructor_id`) VALUES
+(2, 2, 'first', '300', 3),
+(3, 6, 'second', '200', 7);
+
 -- --------------------------------------------------------
 
 --
@@ -68,7 +76,7 @@ CREATE TABLE `appointments` (
 --
 
 CREATE TABLE `courses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `code` varchar(6) NOT NULL,
   `name` varchar(100) NOT NULL,
   `credit_hours` int(11) NOT NULL
@@ -78,9 +86,10 @@ CREATE TABLE `courses` (
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`code`, `name`, `credit_hours`) VALUES
-('MTH331', 'Numerical Analysis', 3),
-('MTH415', 'Differential Equations III', 3);
+INSERT INTO `courses` (`id`, `code`, `name`, `credit_hours`) VALUES
+(2, 'MTH415', 'Differential Equations III', 3),
+(5, 'CSC417', 'Advanced Programming with Java and UML', 3),
+(6, 'CSC332', 'Introduction to  Networking', 3);
 
 -- --------------------------------------------------------
 
@@ -94,6 +103,14 @@ CREATE TABLE `enrollments` (
   `course_id` int(11) NOT NULL,
   `grade` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `enrollments`
+--
+
+INSERT INTO `enrollments` (`id`, `student_id`, `course_id`, `grade`) VALUES
+(1, 2, 6, 4.62),
+(2, 1, 5, 4.8);
 
 -- --------------------------------------------------------
 
@@ -109,6 +126,14 @@ CREATE TABLE `instructors` (
   `phone_number` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `instructors`
+--
+
+INSERT INTO `instructors` (`id`, `first_name`, `last_name`, `email`, `phone_number`) VALUES
+(1, 'John', 'Boe', 'jon@boe.com', '0123456678'),
+(7, 'Baba', 'Seidu', 'Bseidu@ymail.com', '0541234567');
+
 -- --------------------------------------------------------
 
 --
@@ -122,12 +147,21 @@ CREATE TABLE `students` (
   `gender` varchar(6) NOT NULL,
   `date_of_birth` date NOT NULL,
   `phone_number` varchar(10) NOT NULL,
+  `level` varchar(3) NOT NULL,
   `email` varchar(100) NOT NULL,
   `address` varchar(250) NOT NULL,
   `city` varchar(20) NOT NULL,
   `region` varchar(10) NOT NULL,
   `registration_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `first_name`, `last_name`, `gender`, `date_of_birth`, `phone_number`, `level`, `email`, `address`, `city`, `region`, `registration_date`) VALUES
+(1, 'Alhassan', 'Issah', 'male', '2023-01-20', '0241234567', '100', 'aissah@gmail.com', 'UDS, Navrongo', 'Navrongo', 'Upper East', '2023-01-20'),
+(2, 'Mohammed', 'Huzeima', 'female', '2027-03-16', '0241234567', '200', 'huzi@md.com', 'Bimbico', 'Bimbila', 'Northern', '2023-01-20');
 
 --
 -- Indexes for dumped tables
@@ -151,9 +185,7 @@ ALTER TABLE `courses`
 -- Indexes for table `enrollments`
 --
 ALTER TABLE `enrollments`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `student_id` (`student_id`),
-  ADD KEY `course_id` (`course_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `instructors`
@@ -175,43 +207,31 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `courses`
+--
+ALTER TABLE `courses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `enrollments`
 --
 ALTER TABLE `enrollments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `instructors`
 --
 ALTER TABLE `instructors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `appointments`
---
-ALTER TABLE `appointments`
-  ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`instructor_id`) REFERENCES `instructors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `enrollments`
---
-ALTER TABLE `enrollments`
-  ADD CONSTRAINT `enrollments_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `enrollments_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

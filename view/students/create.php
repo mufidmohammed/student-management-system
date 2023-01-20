@@ -33,7 +33,7 @@ include_once('../partials/sidebar.php');
         <div class="table-data">
             <div class="form-data">
                 <div class="form-head">Add New Student</div>
-                <form action="" method="post">
+                <form action="<?= $root . 'app/create.php?table=students' ?>" method="post">
                     <div class="input-field">
                         <label for="name">First name</label>
                         <input type="text" name="first_name" class="form-control">
@@ -49,6 +49,16 @@ include_once('../partials/sidebar.php');
                     <div class="input-field">
                         <label for="name">Phone number</label>
                         <input type="number" name="phone_number" class="form-control">
+                    </div>
+                    <div class="input-field">
+                        <label for="level">Level</label>
+                        <select name="level" class="form-control">
+                            <option value=""></option>
+                            <option value="100">100</option>
+                            <option value="200">200</option>
+                            <option value="300">300</option>
+                            <option value="400">400</option>
+                        </select>
                     </div>
                     <div class="input-field">
                         <label for="dateOfBirth">Date of birth</label>

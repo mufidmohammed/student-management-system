@@ -3,6 +3,12 @@
 include_once('../partials/header.php');
 include_once('../partials/sidebar.php');
 
+if ($_SERVER['REQUEST_METHOD' == 'POST'])
+{
+    $db = new Database();
+    $db->insert('courses', $_POST);
+}
+
 ?>
 
 <section id="content">
@@ -33,7 +39,7 @@ include_once('../partials/sidebar.php');
         <div class="table-data">
             <div class="form-data">
                 <div class="form-head">Add New Course</div>
-                <form action="" method="post">
+                <form action="<?= $root . 'app/create.php?table=courses' ?>" method="post">
                     <div class="input-field">
                         <label for="name">Course name</label>
                         <input type="text" name="name" class="form-control" required="">

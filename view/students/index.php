@@ -3,6 +3,10 @@
 include_once('../partials/header.php');
 include_once('../partials/sidebar.php');
 
+$db = new Database();
+
+$students = $db->all('students');
+
 ?>
 
 <section id="content">
@@ -47,34 +51,22 @@ include_once('../partials/sidebar.php');
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach($students as $student): ?>
                             <tr>
-                                <td>1</td>
-                                <td>Ibn</td>
-                                <td>Abass</td>
-                                <td>abas@ibn.com</td>
-                                <td>Male</td>
-                                <td>400</td>
+                                <td><?= $student['id'] ?></td>
+                                <td><?= $student['first_name'] ?></td>
+                                <td><?= $student['last_name'] ?></td>
+                                <td><?= $student['email'] ?></td>
+                                <td><?= $student['gender'] ?></td>
+                                <td><?= $student['level'] ?></td>
                                 <td>
                                     <div class="tabgroup">
-                                        <span class="tab-item edit"><a href="edit.php">Edit</a></span>
-                                        <span class="tab-item delete"><a href="">Delete</a></span>
+                                        <span class="tab-item edit"><a href="edit.php?id=<?= $student['id'] ?>">Edit</a></span>
+                                        <span class="tab-item delete"><a href="<?= $root . 'app/delete.php?table=students&id=' . $student['id'] ?>" onclick="return confirm('Are you sure you want to delete <?= $student['id'] ?>?')">Delete</a></span>
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Huzeima</td>
-                                <td>Mohammed</td>
-                                <td>huzi@md.com</td>
-                                <td>Female</td>
-                                <td>300</td>
-                                <td>
-                                    <div class="tabgroup">
-                                        <span class="tab-item edit"><a href="edit.php">Edit</a></span>
-                                        <span class="tab-item delete"><a href="">Delete</a></span>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php endforeach ?>
                         </tbody>
                     </table>
 

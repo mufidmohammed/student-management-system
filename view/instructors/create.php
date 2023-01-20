@@ -33,7 +33,7 @@ include_once('../partials/sidebar.php');
         <div class="table-data">
             <div class="form-data">
                 <div class="form-head">Add Instructor</div>
-                <form action="" method="post">
+                <form action="<?= $root . 'app/create.php?table=instructors' ?>" method="post">
                     <div class="input-field">
                         <label for="name">First name</label>
                         <input type="text" name="first_name" class="form-control" required="">

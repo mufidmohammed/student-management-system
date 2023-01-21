@@ -1,2 +1,3 @@
 db_connect/connect.php
 .env
+.gitignore

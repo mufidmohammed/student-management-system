@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2023 at 11:02 AM
+-- Generation Time: Jan 21, 2023 at 02:24 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
   `gender` varchar(6) DEFAULT NULL,
@@ -44,8 +45,8 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`first_name`, `last_name`, `gender`, `date_of_birth`, `phone_number`, `email`, `password`, `address`, `city`, `region`) VALUES
-(NULL, NULL, NULL, NULL, NULL, 'admin@site.com', '$2y$10$uAMcrs8DtkgjZ39KFmDql.RXPGhl7XMVTjFW.IlaKVkoHBqnJVWJC', NULL, NULL, NULL);
+INSERT INTO `admin` (`id`, `first_name`, `last_name`, `gender`, `date_of_birth`, `phone_number`, `email`, `password`, `address`, `city`, `region`) VALUES
+(1, 'John ', 'Doe', 'male', '2014-07-24', '2412345679', 'issah@gmail.com', '$2y$10$FKHom.NjhlxB5SilW7aUe.ri.AHjhTBUgXWzMVLN55//F7Jo5jY5u', 'UDS, Navrongo campus', 'Navrongo', 'Upper East');
 
 -- --------------------------------------------------------
 
@@ -168,6 +169,12 @@ INSERT INTO `students` (`id`, `first_name`, `last_name`, `gender`, `date_of_birt
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `appointments`
 --
 ALTER TABLE `appointments`
@@ -202,6 +209,12 @@ ALTER TABLE `students`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `appointments`

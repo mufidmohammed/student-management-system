@@ -2,9 +2,6 @@
 
 >A PHP project for managing student activities
 
-![schooldash-dahboard-page](https://user-images.githubusercontent.com/63137056/178576517-412251e7-d272-469f-8a98-ec407b599c7a.png)
-
-
 ## Requirements
 * Php 8.1 and above
 * Composer 

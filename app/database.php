@@ -134,4 +134,20 @@ class Database {
 			return [];
 		}
 	}
+
+	public function count(string $table): int
+	{
+		try {
+			$sql = "SELECT COUNT(*) AS total FROM $table";
+			$stmt = $this->conn->prepare($sql);
+			$stmt->execute();
+			$result = $stmt->fetch();
+			
+			return $result['total'];
+		} 
+		catch (PDOException $e) {
+			echo 'Error: ' . $e->getMessage();
+			return 0;
+		}
+	}
 }

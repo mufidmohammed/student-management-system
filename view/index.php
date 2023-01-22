@@ -2,6 +2,18 @@
 
 <?php include_once('partials/sidebar.php') ?>
 
+<?php
+
+$db = new Database();
+
+$enrollments = $db->all('enrollments');
+
+uasort($enrollments, function($a, $b) {
+    return $b['grade'] <=> $a['grade'];
+});
+
+?>
+
 <!-- CONTENT -->
 <section id="content">
 
@@ -30,26 +42,41 @@
 
         <ul class="box-info">
             <li>
-                <i class='bx bxs-calendar-check'></i>
+                <i class='bx bxs-id-card'></i>
                 <span class="text">
-                    <h3>1020</h3>
-                    <p>New Order</p>
+                    <h3><?= $db->count('students') ?></h3>
+                    <p>Students</p>
                 </span>
             </li>
             <li>
                 <i class='bx bxs-group'></i>
                 <span class="text">
-                    <h3>2834</h3>
-                    <p>Visitors</p>
+                    <h3><?= $db->count('instructors') ?></h3>
+                    <p>Instructors</p>
                 </span>
             </li>
             <li>
-                <i class='bx bxs-dollar-circle'></i>
+                <i class='bx bxs-data'></i>
                 <span class="text">
-                    <h3>$2543</h3>
-                    <p>Total Sales</p>
+                    <h3><?= $db->count('courses') ?></h3>
+                    <p>Courses</p>
                 </span>
             </li>
+            <li>
+                <i class='bx bxs-folder-open'></i>
+                <span class="text">
+                    <h3><?= $db->count('enrollments') ?></h3>
+                    <p>Enrollments</p>
+                </span>
+            </li>
+            <li>
+                <i class='bx bxs-id-card'></i>
+                <span class="text">
+                    <h3><?= $db->count('appointments') ?></h3>
+                    <p>Appointments</p>
+                </span>
+            </li>
+            
         </ul>
 
         <div class="table-data">
@@ -60,34 +87,22 @@
                 <table id="students-table">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Gender</th>
-                            <th>Level</th>
-                            <th>Status</th>
+                            <th>Student ID</th>
+                            <th>Course Code</th>
+                            <th>Grade</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach($enrollments as $enrollment): ?>
+                        <?php
+                            $course_code = $db->find('courses', $enrollment['course_id'])['code'];
+                        ?>
                         <tr>
-                            <td>1</td>
-                            <td>Ibn</td>
-                            <td>Abass</td>
-                            <td>abas@ibn.com</td>
-                            <td>Male</td>
-                            <td>400</td>
-                            <td><span class="status completed">enrolled</span></td>
+                            <td><?= $enrollment['id'] ?></td>
+                            <td><?= $course_code ?></td>
+                            <td><?= $enrollment['grade'] ?></td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Ibn</td>
-                            <td>Abass</td>
-                            <td>abas@ibn.com</td>
-                            <td>Male</td>
-                            <td>400</td>
-                            <td><span class="status pending">pending</span></td>
-                        </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>

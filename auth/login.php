@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         <div class="form-box">
             <h1>Login</h1>
             <form method="POST" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+                <?php if (!empty($errors)) : ?>
                 <div class="error">
                     <ul>
                         <?php foreach($errors as $error): ?>
@@ -46,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                         <?php endforeach ?>
                     </ul>
                 </div>
+                <?php endif ?>
                 <div class="input-field">
                 <i class='bx bxs-envelope'></i>
                     <input type="email" name="email" placeholder="Email" class="form-control" required="">

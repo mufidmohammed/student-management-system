@@ -15,7 +15,7 @@
         <span class="num">8</span>
     </a>
     <a href="#" class="profile">
-        <img src="<?= $root . 'assets/img/people.png' ?>">
+        <img src="<?= $root . 'assets/img/people.jfif' ?>">
     </a>
 </nav>
 <!-- NAVBAR -->

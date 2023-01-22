@@ -2,9 +2,9 @@
 
 session_start();
 
-$path = dirname(__DIR__) . '/auth/login.php';
+$path = '/student-management-system' . '/auth/login.php';
 
 if(!isset($_SESSION['auth']))
 {
-    header("Location: " . $path);
+    header("Location: {$path}");
 }

@@ -46,7 +46,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `first_name`, `last_name`, `gender`, `date_of_birth`, `phone_number`, `email`, `password`, `address`, `city`, `region`) VALUES
-(NULL, NULL, NULL, NULL, NULL, NULL, 'issah@gmail.com', '$2y$10$FKHom.NjhlxB5SilW7aUe.ri.AHjhTBUgXWzMVLN55//F7Jo5jY5u', NULL, NULL, NULL);
+(1, NULL, NULL, NULL, NULL, NULL, 'issah@gmail.com', '$2y$10$FKHom.NjhlxB5SilW7aUe.ri.AHjhTBUgXWzMVLN55//F7Jo5jY5u', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

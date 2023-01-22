@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2023 at 07:15 PM
+-- Generation Time: Jan 22, 2023 at 07:26 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -35,7 +35,7 @@ CREATE TABLE `admin` (
   `date_of_birth` date DEFAULT NULL,
   `phone_number` varchar(10) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `password` varchar(250) NOT NULL,
   `address` varchar(250) DEFAULT NULL,
   `city` varchar(20) DEFAULT NULL,
   `region` varchar(10) DEFAULT NULL
@@ -46,7 +46,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `first_name`, `last_name`, `gender`, `date_of_birth`, `phone_number`, `email`, `password`, `address`, `city`, `region`) VALUES
-(NULL, NULL, NULL, NULL, NULL, NULL, 'issah@gmail.com', '$2y$10$FKHom.NjhlxB5SilW7aUe.ri.AHjhTBUgXWzMVLN55//F7Jo5jY5u', NULL, NULL, NULL);
+(1, NULL, NULL, NULL, NULL, NULL, 'admin@site.com', '$2y$10$Dcrncli/k8yqBZLZZ67qOeL.oCaObuacPfpeVOEO7LweFuygeETd2', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

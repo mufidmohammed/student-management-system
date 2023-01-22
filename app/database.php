@@ -151,12 +151,3 @@ class Database {
 		}
 	}
 }
-
-$db = new Database();
-
-$data = [
-	'email' => 'admin@site.com',
-	'password' => password_hash('admin', PASSWORD_DEFAULT)
-];
-$db->update('admin', 1, $data);
-echo "done";
